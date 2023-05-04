@@ -131,6 +131,10 @@ var options = {
     extensions: fileExtensions
       .map((extension) => '.' + extension)
       .concat(['.js', '.jsx', '.ts', '.tsx', '.css']),
+    fallback: {
+      "crypto": require.resolve("crypto-browserify"),
+      "stream": require.resolve("stream-browserify")
+    },
   },
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
@@ -214,6 +218,10 @@ var options = {
       chunks: ['panel'],
       cache: false,
     }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      // Buffer: ['buffer', 'Buffer']
+    })
   ].filter(Boolean),
   infrastructureLogging: {
     level: 'info',
