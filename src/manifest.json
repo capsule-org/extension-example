@@ -3,6 +3,9 @@
   "name": "Chrome Extension with React & Webpack",
   "description": "A chrome extension boilerplate built with React 17, Webpack 5, and Webpack Dev Server 4",
   "options_page": "options.html",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval';"
+  },
   "background": { "service_worker": "background.bundle.js" },
   "action": {
     "default_popup": "popup.html",
